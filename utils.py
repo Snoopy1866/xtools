@@ -49,7 +49,7 @@ def copy_dir_struct(old_dir_path: str, new_dir_path: str) -> None:
     复制目录结构
     
     参数:
-    dir_path: str, 原目录路径
+    old_dir_path: str, 原目录路径
     new_dir_path: str, 新目录路径
     """
     if not os.path.exists(new_dir_path):

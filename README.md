@@ -1,6 +1,16 @@
 # xtools
 
-## sas2txt
+## 导入模块
+
+```py
+import utils
+```
+
+## 用法举例
+
+### sas2txt
+
+根据正则表达式截取 SAS 程序文件，并在参数 `sas_dir_path` 的 submit 子目录下保存为 txt 文件
 
 参数：
 
@@ -11,13 +21,28 @@
 例子：
 
 ```py
-sas2txt(sas_dir_path = r"~\04 统计分析\04 ADS程序\01 主程序",
-        line_pattern_s = r"\/\*Rest system automatic macro variable\*\/",
-        line_pattern_e = r"\/\*输出日志\*\/")
+utils.sas2txt(sas_dir_path = r"~\04 统计分析\04 ADS程序\01 主程序",
+              line_pattern_s = r"\/\*Rest system automatic macro variable\*\/",
+              line_pattern_e = r"\/\*输出日志\*\/")
 
-sas2txt(sas_dir_path = r"~\04 统计分析\05 TFL程序\01 主程序",
-        line_pattern_s = r"\/\*=+分析程序开始=+\*\/",
-        line_pattern_e = r"\/\*=+分析程序结束=+\*\/")
+utils.sas2txt(sas_dir_path = r"~\04 统计分析\05 TFL程序\01 主程序",
+              line_pattern_s = r"\/\*=+分析程序开始=+\*\/",
+              line_pattern_e = r"\/\*=+分析程序结束=+\*\/")
 
-sas2txt(sas_dir_path = r"~\04 统计分析\09 Macro")
+utils.sas2txt(sas_dir_path = r"~\04 统计分析\09 Macro")
+```
+
+### copy_dir_struct
+
+复制目录结构（不复制文件）
+
+参数：
+
+- `old_dir_path`: `string`, 原目录路径
+- `new_dir_path`: `string`, 新目录路径
+
+例子：
+
+```py
+utils.copy_dir_struct(old_dir_path = r"~\原目录", new_dir_path = r"~\新目录")
 ```
