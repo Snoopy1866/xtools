@@ -2,7 +2,9 @@ import os
 import glob
 import re
 
-def sas2txt(sas_dir_path, line_pattern_s=None, line_pattern_e=None):
+def sas2txt(sas_dir_path: str,
+            line_pattern_s: str | None =None,
+            line_pattern_e: str | None =None) -> None:
     """
     将SAS程序文件中的特定内容转换为TXT格式并保存
     
@@ -40,3 +42,22 @@ def sas2txt(sas_dir_path, line_pattern_s=None, line_pattern_e=None):
                         break
                     if flag_s and not flag_e:
                         fw.write(fr_line)
+
+
+def copy_dir_struct(old_dir_path: str, new_dir_path: str) -> None:
+    """
+    复制目录结构
+    
+    参数:
+    dir_path: str, 原目录路径
+    new_dir_path: str, 新目录路径
+    """
+    if not os.path.exists(new_dir_path):
+        os.makedirs(new_dir_path)
+    
+    for root, dirs, _ in os.walk(old_dir_path):
+        for dir_name in dirs:
+            dir_name_path = os.path.join(root, dir_name)
+            new_dir_name_path = dir_name_path.replace(old_dir_path, new_dir_path)
+            if not os.path.exists(new_dir_name_path):
+                os.makedirs(new_dir_name_path)
